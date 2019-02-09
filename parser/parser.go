@@ -3,6 +3,7 @@ package parser
 import (
 	"bufio"
 	"errors"
+	"fmt"
 	"io"
 	"strings"
 
@@ -76,13 +77,15 @@ func renderItem(item []string) string {
 	l := len(item)
 
 	if l == 1 {
-		return "\n**" + item[0] + "**\n\n"
+		return "\n<b>" + item[0] + "</b>\n\n"
 	}
 
 	if l > 1 && item[1][0] == '[' && item[1][len(item[1])-1] == ']' {
 		il := len(item[1])
 		if item[1][0] == '[' && item[1][il-1] == ']' {
-			return "[" + item[0] + "](" + item[1][1:il-1] + ")\n\n"
+			return fmt.Sprintf("<a href=\"%s\">%s</a>",
+				item[1][1:il-1],
+				item[0])
 		}
 	}
 

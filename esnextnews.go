@@ -23,7 +23,7 @@ type sesEvent struct {
 }
 
 func getTelegremMessage(text string) string {
-	return fmt.Sprintf("chat_id=%s&parse_mode=Markdown&disable_web_page_preview=true&text=%s",
+	return fmt.Sprintf("chat_id=%s&parse_mode=HTML&disable_web_page_preview=true&text=%s",
 		viper.GetString("chat_id"),
 		url.QueryEscape(text))
 }
