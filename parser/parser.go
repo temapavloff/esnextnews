@@ -85,7 +85,7 @@ func renderItem(item []string) string {
 		if item[1][0] == '[' && item[1][il-1] == ']' {
 			return fmt.Sprintf("<a href=\"%s\">%s</a>",
 				item[1][1:il-1],
-				item[0])
+				item[0]) + "\n\n"
 		}
 	}
 
