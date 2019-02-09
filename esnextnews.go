@@ -11,6 +11,7 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/spf13/viper"
@@ -35,11 +36,21 @@ func handleRequest(ctx context.Context, sesEvent events.SimpleEmailEvent) error 
 		return fmt.Errorf("SES event has no records")
 	}
 
-	messageID := sesEvent.Records[0].SES.Mail.MessageID
-	svc := s3.New(session.New())
+	region := viper.GetString("aws_region")
+	keyID := viper.GetString("aws_key")
+	secret := viper.GetString("aws_secret")
+	sess, err := session.NewSession(&aws.Config{
+		Region:      aws.String(region),
+		Credentials: credentials.NewStaticCredentials(keyID, secret, ""),
+	})
+	if err != nil {
+		return fmt.Errorf("Cannot create AWS session: %s", err)
+	}
+
+	svc := s3.New(sess)
 	o, err := svc.GetObject(&s3.GetObjectInput{
 		Bucket: aws.String(viper.GetString("aws_bucket")),
-		Key:    aws.String(messageID),
+		Key:    aws.String(sesEvent.Records[0].SES.Mail.MessageID),
 	})
 	if err != nil {
 		return fmt.Errorf("Cannot load data from s3: %s", err)
@@ -67,4 +78,7 @@ func init() {
 	viper.BindEnv("bot_token")
 	viper.BindEnv("chat_id")
 	viper.BindEnv("aws_bucket")
+	viper.BindEnv("aws_key")
+	viper.BindEnv("aws_secret")
+	viper.BindEnv("aws_region")
 }
