@@ -1,0 +1,996 @@
+Received: from mxfront12g.mail.yandex.net ([127.0.0.1])
+	by mxfront12g.mail.yandex.net with LMTP id n64z7gsN
+	for <pavl0ff@ya.ru>; Tue, 5 Feb 2019 17:21:03 +0300
+Received: from o38.p25.mailjet.com (o38.p25.mailjet.com [185.189.236.38])
+	by mxfront12g.mail.yandex.net (nwsmtp/Yandex) with ESMTPS id PtPuZZmea8-L2wSpN1l;
+	Tue, 05 Feb 2019 17:21:02 +0300
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(Client certificate not present)
+Return-Path: 8b26a60a.AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZvL@bnc3.mailjet.com
+X-Yandex-Front: mxfront12g.mail.yandex.net
+X-Yandex-TimeMark: 1549376462
+Authentication-Results: mxfront12g.mail.yandex.net; spf=pass (mxfront12g.mail.yandex.net: domain of bnc3.mailjet.com designates 185.189.236.38 as permitted sender, rule=[ip4:185.189.236.0/22]) smtp.mail=8b26a60a.AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZvL@bnc3.mailjet.com; dkim=pass header.i=hello@esnextnews.com
+X-Yandex-Spam: 2
+X-Yandex-Fwd: MTM4MTUxMjkyOTc5OTU2ODE0NDMsODg2NTQzODMyNDg1NTM2ODYxNw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; q=dns/txt;
+  d=esnextnews.com; i=hello@esnextnews.com; s=mailjet;
+  h=message-id:mime-version:from:to:subject:date:list-id:list-unsubscribe:
+  precedence:x-csa-complaints:x-mj-mid:x-mj-smtpguid:x-report-abuse-to:
+  content-type;
+  bh=8MF96ylpFc+uPZyIbc1IrOgTILU++/Ysk/FJiLTRxGw=;
+  b=l+CNmqKKPqnrwDzgN5pLLNA2/CwqMrS5aikjwZVR9/X8u8MN3VHl9IwCW
+ dEAx/g9ivxQH4GLyVVJZfzfzwfZE6GMgcstOzonkPzLtE/HIVKN3Pp4L93Mc
+ UgD+/44rzm6YVbBfC6CULRcpFvfKl13tyuXfpr4d3rHJy+9y4zqkFw=
+Message-Id: <8b26a60a.AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZvL@mailjet.com>
+MIME-Version: 1.0
+From: "ES.next News" <hello@esnextnews.com>
+To: pavl0ff@ya.ru
+Subject: ES2019, pipeline operator, JS vs. C++ vs. WebAssembly, limiting JS,
+ codemods, TypeScript 3.3, `never`, `unknown` (TypeScript)
+Date: Tue,  5 Feb 2019 14:16:22 +0000 (UTC)
+List-Id: <hello.esnextnews.com.xx1xw-x0oy.mj>
+List-Unsubscribe: <mailto:unsub-8b26a60a.xx1xw.ss5755v9po4u@bnc3.mailjet.com>
+Precedence: bulk
+X-CSA-Complaints: whitelist-complaints@eco.de
+X-MJ-Mid: AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g
+X-MJ-SMTPGUID: 758514dd-7b34-4373-a4f9-00c8d146be94
+X-REPORT-ABUSE-TO: Message sent by Mailjet please report to
+	abuse@mailjet.com with a copy of the message
+Content-Type: multipart/alternative; boundary="=-x1orm3zEPWLfxvhliXO6"
+X-Yandex-Forward: 9025a46a1eb344e0f9cc41f546bcf112
+
+--=-x1orm3zEPWLfxvhliXO6
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+ES.nextNews: the latest in JavaScript and cross-platform tools=20
+Curated by Dr. Axel Rauschmayer [https://twitter.com/rauschma] and Johannes=
+ Weber [https://twitter.com/jowe]. Email not displaying
+correctly?
+View it in your browser [http://xx1xw.mjt.lu/nl2/xx1xw/xoj2.html?m=3DAMQAAC=
+2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g&b=
+=3D8b26a60a&e=3D881a5dc4&x=3DISMLi1Nygd6v0Cphc_qi1Q].=20
+ES.next News [http://esnextnews.com/]=20
+
+THE LATEST IN JAVASCRIPT AND CROSS-PLATFORM TOOLS=20
+ECMAScript 2019: the final feature set
+[http://2ality.com/2018/02/ecmascript-2019.html?utm_source=3DESnextNews.com=
+&utm_medium=3DWeekly+Newsletter&utm_campaign=3D2019-02-05]=20
+2ality.com
+[http://2ality.com/2018/02/ecmascript-2019.html?utm_source=3DESnextNews.com=
+&utm_medium=3DWeekly+Newsletter&utm_campaign=3D2019-02-05]=20
+@rauschma [https://twitter.com/rauschma]=20
+
+
+What's Happening With the Pipeline (|>) Proposal? [older, but still relevan=
+t]
+[https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-propo=
+sal?utm_source=3DESnextNews.com&utm_medium=3DWeekly+Newsletter&utm_campaign=
+=3D2019-02-05]=20
+babeljs.io
+[https://babeljs.io/blog/2018/07/19/whats-happening-with-the-pipeline-propo=
+sal?utm_source=3DESnextNews.com&utm_medium=3DWeekly+Newsletter&utm_campaign=
+=3D2019-02-05]=20
+@JamesDiGioia, [https://twitter.com/JamesDiGioia] @babeljs [https://twitter=
+.com/babeljs]=20
+
+
+Speed, Speed, Speed: JavaScript vs. C++ vs. WebAssembly [29-min. video]
+[https://www.youtube.com/watch?v=3DuMuYaES4W3o&utm_source=3DESnextNews.com&=
+utm_medium=3DWeekly+Newsletter&utm_campaign=3D2019-02-05]=20
+www.youtube.com
+[https://www.youtube.com/watch?v=3DuMuYaES4W3o&utm_source=3DESnextNews.com&=
+utm_medium=3DWeekly+Newsletter&utm_campaign=3D2019-02-05]=20
+@fhinkel [https://twitter.com/fhinkel]=20
+
+
+Read the book on ECMAScript 2019!
+[http://exploringjs.com/es2018-es2019/?utm_source=3DESnextNews.com&utm_medi=
+um=3DWeekly+Newsletter&utm_campaign=3D2019-02-05]=20
+The book =E2=80=9CExploring ES2018 and ES2019=E2=80=9D is complete. Buy it =
+and read the chapters on ES2019 right now. Everybody else has to wait
+until March 1.=20
+exploringjs.com
+[http://exploringjs.com/es2018-es2019/?utm_source=3DESnextNews.com&utm_medi=
+um=3DWeekly+Newsletter&utm_campaign=3D2019-02-05] Sponsor=20
+
+
+Limiting [the size of downloaded] JavaScript?
+[https://timkadlec.com/remembers/2019-01-31-putting-some-limits-on-javascri=
+pt/?utm_source=3DESnextNews.com&utm_medium=3DWeekly+Newsletter&utm_campaign=
+=3D2019-02-05]=20
+timkadlec.com
+[https://timkadlec.com/remembers/2019-01-31-putting-some-limits-on-javascri=
+pt/?utm_source=3DESnextNews.com&utm_medium=3DWeekly+Newsletter&utm_campaign=
+=3D2019-02-05]=20
+@tkadlec [https://twitter.com/tkadlec]=20
+
+
+Codemods: Effective, Automated Refactoring
+[https://www.sitepen.com/blog/codemods-effective-automated-refactoring/?utm=
+_source=3DESnextNews.com&utm_medium=3DWeekly+Newsletter&utm_campaign=3D2019=
+-02-05]=20
+www.sitepen.com
+[https://www.sitepen.com/blog/codemods-effective-automated-refactoring/?utm=
+_source=3DESnextNews.com&utm_medium=3DWeekly+Newsletter&utm_campaign=3D2019=
+-02-05]=20
+@nicknisi [https://twitter.com/nicknisi]=20
+
+
+
+TYPESCRIPT
+
+Announcing TypeScript 3.3
+[https://blogs.msdn.microsoft.com/typescript/2019/01/31/announcing-typescri=
+pt-3-3/?utm_source=3DESnextNews.com&utm_medium=3DWeekly+Newsletter&utm_camp=
+aign=3D2019-02-05]=20
+blogs.msdn.microsoft.com
+[https://blogs.msdn.microsoft.com/typescript/2019/01/31/announcing-typescri=
+pt-3-3/?utm_source=3DESnextNews.com&utm_medium=3DWeekly+Newsletter&utm_camp=
+aign=3D2019-02-05]=20
+@drosenwasser, [https://twitter.com/drosenwasser] @typescriptlang [https://=
+twitter.com/typescriptlang]=20
+
+
+When to use `never` and `unknown` in TypeScript
+[https://blog.logrocket.com/when-to-use-never-and-unknown-in-typescript-5e4=
+d6c5799ad?utm_source=3DESnextNews.com&utm_medium=3DWeekly+Newsletter&utm_ca=
+mpaign=3D2019-02-05]=20
+blog.logrocket.com
+[https://blog.logrocket.com/when-to-use-never-and-unknown-in-typescript-5e4=
+d6c5799ad?utm_source=3DESnextNews.com&utm_medium=3DWeekly+Newsletter&utm_ca=
+mpaign=3D2019-02-05]=20
+@hallettj, [https://twitter.com/hallettj] @LogRocket [https://twitter.com/L=
+ogRocket]=20
+
+
+
+---------------------------------------------------------------------------=
+-------------------------------------------------------
+
+Looking for deeply qualified employees or customers? Advertise on ES.next N=
+ews!=20
+ES.next News reaches over 8,000 highly skilled and motivated developers. We=
+ take their trust seriously and have high editorial
+standards.=20
+Check out our media data [http://esnextnews.com/#advertising-on-esnextnews]=
+ and get directly in touch with us.
+[mailto:advertising@esnextnews.com]=20
+Follow on Twitter [https://twitter.com/Esnextnews]View in Browser [http://x=
+x1xw.mjt.lu/nl2/xx1xw/xoj2.html?m=3DAMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHH=
+mAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g&b=3D8b26a60a&e=3D881a5dc4&x=3DISML=
+i1Nygd6v0Cphc_qi1Q]=20
+
+This email was sent to pavl0ff@ya.ru. Want to change how you receive these =
+emails?
+You can unsubscribe from this list [[[UNSUB_LINK_EN]]]=
+
+--=-x1orm3zEPWLfxvhliXO6
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html>
+<head lang=3D"en">
+    <meta property=3D"og:title" content=3D"ES.next News">
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1, maximum-scale=3D1">
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8=
+">
+    <title>ES2019, pipeline operator, JS vs. C++ vs. WebAssembly, limiting =
+JS, codemods, TypeScript 3.3, `never`, `unknown` (TypeScript)</title>
+    <style type=3D"text/css">
+        #outlook a {
+            padding: 0;
+        }
+        .ReadMsgBody {
+            width: 100%;
+        }
+        .ExternalClass {
+            width: 100%;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            margin: 0;
+            padding: 0;
+            background-color: #F4F4F4;
+        }
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+        table, td {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        #bodyTable {
+            height: 100% !important;
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        h1 {
+            color: #202020;
+            display: block;
+            font-family: Helvetica;
+            font-size: 26px;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 100%;
+            letter-spacing: normal;
+            margin-top: 0;
+            margin-right: 0;
+            margin-bottom: 10px;
+            margin-left: 0;
+            text-align: left;
+        }
+        h2 {
+            color: #404040;
+            display: block;
+            font-family: Helvetica;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 100%;
+            letter-spacing: normal;
+            margin-top: 0;
+            margin-right: 0;
+            margin-bottom: 10px;
+            margin-left: 0;
+            text-align: left;
+        }
+        h3 {
+            color: #606060;
+            display: block;
+            font-family: Helvetica;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 100%;
+            letter-spacing: normal;
+            margin-top: 0;
+            margin-right: 0;
+            margin-bottom: 10px;
+            margin-left: 0;
+            text-align: left;
+        }
+        h4 {
+            color: #808080;
+            display: block;
+            font-family: Helvetica;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 100%;
+            letter-spacing: normal;
+            margin-top: 0;
+            margin-right: 0;
+            margin-bottom: 10px;
+            margin-left: 0;
+            text-align: left;
+        }
+        #templatePreheader {
+            background-color: #038543;
+            border-bottom: 0;
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+            border-bottom: 0;
+        }
+        .preheaderContent {
+            color: #FFFFFF;
+            font-family: Helvetica;
+            font-size: 10px;
+            line-height: 125%;
+            text-align: left;
+            text-align: left;
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        .preheaderContentLink {
+            color: #FFFFFF;
+        }
+        .preheaderContent a:link, .preheaderContent a:visited, .preheaderCo=
+ntent a .yshortcuts {
+            color: #FFFFFF;
+            font-weight: normal;
+            text-decoration: underline;
+        }
+        #templateHeader {
+            background-color: #FFFFFF;
+            border-top: 0;
+            border-bottom: 0;
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+            border-top: 0;
+            border-bottom: 0;
+        }
+        .headerContent {
+            color: #505050;
+            font-family: Helvetica;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 100%;
+            padding-top: 20px;
+            padding-right: 0;
+            padding-bottom: 20px;
+            padding-left: 0;
+            text-align: left;
+            vertical-align: middle;
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        .headerContent a:link, .headerContent a:visited, .headerContent a .=
+yshortcuts {
+            color: #26ABE2;
+            font-weight: normal;
+            text-decoration: underline;
+        }
+        #templateBody {
+            background-color: #ffffff;
+            border-top: 0;
+            border-bottom: 0;
+            padding: 20px;
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        .bodyContent {
+            color: #505050;
+            font-family: Helvetica;
+            font-size: 13px;
+            line-height: 150%;
+            text-align: left;
+        }
+        .bodyContent a:link, .bodyContent a:visited, .bodyContent a .yshort=
+cuts {
+            color: #333333;
+            font-weight: normal;
+            text-decoration: none;
+        }
+        .bodyContent img {
+            display: inline;
+            height: auto;
+            max-width: 600px;
+        }
+        #templateFooter {
+            border-top: 0;
+            padding: 20px;
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        .templateContainer {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        body, #bodyTable {
+            background-color: #F4F4F4;
+        }
+        .footerContent {
+            color: #808080;
+            font-family: Helvetica;
+            font-size: 10px;
+            line-height: 150%;
+            text-align: left;
+        }
+        .footerContent a:link, .footerContent a:visited, .footerContent a .=
+yshortcuts {
+            color: #606060;
+            font-weight: normal;
+            text-decoration: underline;
+        }
+        .footerContent img {
+            display: inline;
+        }
+        .postItemTwitterName {
+            color: #038543;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .postItemLinkUrl {
+            color: #a9a9a9;
+            font-weight: normal;
+            text-decoration: none;
+        }
+        .postItemTwitterLink {
+            color: #333333;
+            font-weight: normal;
+            text-decoration: none;
+        }
+        .postItemAuthorAvatarImage {
+            vertical-align: middle;
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+            display: inline;
+            max-width: 600px;
+        }
+        .postItemBody {
+            color: #757575;
+        }
+        p {
+            margin: 0 !important;
+        }
+        .postItemTitleLink {
+            color: #333333;
+            font-weight: normal;
+            text-decoration: none;
+        }
+        .postItemTitle {
+            font-size: 24px;
+            font-family: georgia, serif;
+            line-height: 1.3;
+        }
+        .postItemSponsoredLabel {
+            margin-top: -5px;
+            vertical-align: middle;
+            border-radius: 3px;
+            background: #eee;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: normal;
+            color: #aaa;
+            padding: 1px 5px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        @media only screen and (max-width: 480px) {
+            body, table, td, p, a, li, blockquote {
+                -webkit-text-size-adjust: none !important;
+            }
+            body {
+                width: 100% !important;
+                min-width: 100% !important;
+            }
+            td[id=3DtemplateBody], td[id=3DtemplateFooter] {
+                padding-right: 10px !important;
+                padding-left: 10px !important;
+            }
+            table[class=3DtemplateContainer] {
+                max-width: 600px !important;
+                width: 100% !important;
+            }
+            table[id=3DtemplatePreheader] {
+                display: none;
+            }
+            h1 {
+                font-size: 28px !important;
+                line-height: 100% !important;
+            }
+            h2 {
+                font-size: 14px !important;
+                line-height: 100% !important;
+            }
+            h3 {
+                font-size: 20px !important;
+                line-height: 100% !important;
+            }
+            h4 {
+                font-size: 16px !important;
+                line-height: 100% !important;
+            }
+            img[id=3DheaderImage] {
+                height: auto !important;
+                max-width: 233px !important;
+                width: 100% !important;
+            }
+            .headerContent {
+                font-size: 20px !important;
+                line-height: 150% !important;
+                padding-top: 20px !important;
+                padding-right: 10px !important;
+                padding-bottom: 20px !important;
+                padding-left: 10px !important;
+            }
+            .bodyContent {
+                font-size: 17px !important;
+                line-height: 150% !important;
+            }
+            .footerContent {
+                font-size: 13px !important;
+                line-height: 150% !important;
+            }
+            td[class=3DfooterContent] a {
+                display: block !important;
+            }
+            .hide-on-mobile {
+                display: none;
+                visibility: hidden;
+            }
+        }
+    </style>
+    <!--[if gte mso 9]>
+    <style type=3D"text/css">
+        img.postItemTwitterLink {
+            width: 18px !important;
+            height: 18px !important;
+        }
+    </style>
+    <![endif]-->
+</head>
+<body leftmargin=3D"0" marginwidth=3D"0" topmargin=3D"0" marginheight=3D"0"=
+ offset=3D"0" style=3D"background-color: #F4F4F4; margin: 0; padding: 0;">
+<center>
+    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" height=3D"100%"=
+ width=3D"100%" id=3D"bodyTable" style=3D"background-color: #F4F4F4; border=
+-collapse: collapse; height: 100%; margin: 0; mso-table-lspace: 0pt; mso-ta=
+ble-rspace: 0pt; padding: 0; width: 100%;">
+        <tr>
+            <td align=3D"center" valign=3D"top" style=3D"border-collapse: c=
+ollapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                <!-- // BEGIN PREHEADER -->
+                <table border=3D"0" cellpadding=3D"10" cellspacing=3D"0" wi=
+dth=3D"100%" id=3D"templatePreheader" style=3D"background-color: #038543; b=
+order-bottom: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-tabl=
+e-rspace: 0pt;">
+                    <tr>
+                        <td align=3D"center" valign=3D"top" style=3D"border=
+-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"600" style=3D"border-collapse: collapse; mso-table-lspace=
+: 0pt; mso-table-rspace: 0pt;">
+                                <tr>
+                                    <td valign=3D"top" class=3D"preheaderCo=
+ntent" style=3D"border-collapse: collapse; color: #FFFFFF; font-family: Hel=
+vetica; font-size: 10px; line-height: 125%; mso-table-lspace: 0pt; mso-tabl=
+e-rspace: 0pt; text-align: left;">
+                                        ES.nextNews: the latest in JavaScri=
+pt and cross-platform tools
+                                        <br>
+                                        Curated by
+                                        <a href=3D"http://xx1xw.mjt.lu/lnk/=
+AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAA=
+Mz_g/1/WBNbVOEvq2mGp7LGLdRBFg/aHR0cHM6Ly90d2l0dGVyLmNvbS9yYXVzY2htYQ" class=
+=3D"preheaderContentLink" target=3D"_blank" style=3D"color: #FFFFFF;">Dr. A=
+xel Rauschmayer</a> and
+                                        <a href=3D"http://xx1xw.mjt.lu/lnk/=
+AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAA=
+Mz_g/2/seEyvtBdQWLOsSspHQZq6w/aHR0cHM6Ly90d2l0dGVyLmNvbS9qb3dl" class=3D"pr=
+eheaderContentLink" target=3D"_blank" style=3D"color: #FFFFFF;">Johannes We=
+ber</a>.
+                                    </td>
+                                    <td valign=3D"top" align=3D"right" styl=
+e=3D"border-collapse: collapse; color: #FFFFFF; font-family: Helvetica; fon=
+t-size: 10px; line-height: 125%; mso-table-lspace: 0pt; mso-table-rspace: 0=
+pt; padding-left: 20px; text-align: right;">
+                                        Email not displaying correctly?<br>=
+<a href=3D"http://xx1xw.mjt.lu/nl2/xx1xw/xoj2.html?m=3DAMQAAC2ccnUAAAAB4jgA=
+AAD1YJAAAAAAPosAAHHmAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g&b=3D8b26a60a&e=
+=3D881a5dc4&x=3DISMLi1Nygd6v0Cphc_qi1Q" style=3D"color:#FFFFFF;font-weight:=
+normal;text-decoration:underline" target=3D"_blank">View it in your browser=
+</a>.
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <!-- END PREHEADER \\ -->
+                <!-- // BEGIN TEMPLATE SECTIONS -->
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"100%" style=3D"border-collapse: collapse; mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt;">
+                    <tr>
+                        <td align=3D"center" valign=3D"top" style=3D"border=
+-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                            <!-- // BEGIN HEADER -->
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"100%" style=3D"border-collapse: collapse; mso-table-lspac=
+e: 0pt; mso-table-rspace: 0pt;">
+                                <tr>
+                                    <td align=3D"center" valign=3D"top" id=
+=3D"templateHeader" style=3D"background-color: #FFFFFF; border-bottom: 0; b=
+order-collapse: collapse; border-top: 0; mso-table-lspace: 0pt; mso-table-r=
+space: 0pt;">
+                                        <table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" width=3D"600" class=3D"templateContainer" style=3D"bor=
+der-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                            <tr>
+                                                <td class=3D"headerContent"=
+ style=3D"border-collapse: collapse; color: #505050; font-family: Helvetica=
+; font-size: 20px; font-weight: bold; line-height: 100%; mso-table-lspace: =
+0pt; mso-table-rspace: 0pt; padding-bottom: 20px; padding-left: 0; padding-=
+right: 0; padding-top: 20px; text-align: left; vertical-align: middle;">
+                                                    <br class=3D"hide-on-mo=
+bile">
+                                                    <a href=3D"http://xx1xw=
+.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZvLdYUU3Xs0Q3O=
+k-QDI0Ua-lAAMz_g/3/r-2iuK7f7DYQCFf-1ux61g/aHR0cDovL2VzbmV4dG5ld3MuY29tLw" t=
+arget=3D"_self" class=3D"headerContentTitleLink" style=3D"text-decoration: =
+none;color: #26ABE2;font-weight: normal;"><span style=3D"color:#038543; fon=
+t-size:40px;">ES.next News</span>
+                                                    </a>
+                                                    <br>
+                                                    <br class=3D"hide-on-mo=
+bile">
+                                                    <h2 style=3D"border: 0p=
+x; color: rgb(170, 170, 170); display: block; font: inherit; font-family: c=
+haparral-pro, Georgia, serif; font-size: 18px; font-style: normal; font-wei=
+ght: 500; letter-spacing: normal; line-height: 1; margin-bottom: 0px; margi=
+n-left: 0; margin-right: 0; margin-top: 0; padding: 0px; text-align: left; =
+vertical-align: baseline;">
+                                                        The latest in JavaS=
+cript and cross-platform tools
+                                                    </h2>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- END HEADER \\ -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align=3D"center" valign=3D"top" style=3D"border=
+-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                            <!-- // BEGIN BODY -->
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"100%" style=3D"border-collapse: collapse; mso-table-lspac=
+e: 0pt; mso-table-rspace: 0pt;">
+                                <tr>
+                                    <td align=3D"center" valign=3D"top" id=
+=3D"templateBody" style=3D"background-color: #ffffff; border-bottom: 0; bor=
+der-collapse: collapse; border-top: 0; mso-table-lspace: 0pt; mso-table-rsp=
+ace: 0pt; padding: 20px;">
+                                        <table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" width=3D"600" class=3D"templateContainer" style=3D"bor=
+der-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                            <tr>
+                                                <td valign=3D"top" class=3D=
+"bodyContent" style=3D"border-collapse: collapse; color: #505050; font-fami=
+ly: Helvetica; font-size: 13px; line-height: 150%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt; text-align: left;">
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/4/7nav8b58Cg13HdCpuTsw4g/aHR0cDovLzJhbGl0eS5jb=
+20vMjAxOC8wMi9lY21hc2NyaXB0LTIwMTkuaHRtbD91dG1fc291cmNlPUVTbmV4dE5ld3MuY29t=
+JnV0bV9tZWRpdW09V2Vla2x5K05ld3NsZXR0ZXImdXRtX2NhbXBhaWduPTIwMTktMDItMDU" cl=
+ass=3D"post-title postItemTitleLink" target=3D"_blank" style=3D"color: #333=
+333; font-weight: normal; text-decoration: none;"><span class=3D"postItemTi=
+tle" style=3D"font-family: georgia, serif; font-size: 21px; line-height: 1;=
+">ECMAScript 2019: the final feature set</span></a>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/5/lNJGzVCVoksy0NXxMufN9A/aHR0cDovLzJhbGl0eS5jb=
+20vMjAxOC8wMi9lY21hc2NyaXB0LTIwMTkuaHRtbD91dG1fc291cmNlPUVTbmV4dE5ld3MuY29t=
+JnV0bV9tZWRpdW09V2Vla2x5K05ld3NsZXR0ZXImdXRtX2NhbXBhaWduPTIwMTktMDItMDU" cl=
+ass=3D"postItemLinkUrl" style=3D"color: #a9a9a9; font-weight: normal; text-=
+decoration: none;">2ality.com</a>
+                                                                    <br>
+                                                                           =
+ <a href=3D"http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHH=
+mAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/6/cw-CStfBzTqrtHVwk53OYw/aHR0cHM6L=
+y90d2l0dGVyLmNvbS9yYXVzY2htYQ" style=3D"color: #038543; text-decoration: no=
+ne;" target=3D"_blank">@rauschma</a>
+                                                                <br>
+                                                                <br>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/7/f9LOYHEL_uwNRBPuVswGtg/aHR0cHM6Ly9iYWJlbGpzL=
+mlvL2Jsb2cvMjAxOC8wNy8xOS93aGF0cy1oYXBwZW5pbmctd2l0aC10aGUtcGlwZWxpbmUtcHJv=
+cG9zYWw_dXRtX3NvdXJjZT1FU25leHROZXdzLmNvbSZ1dG1fbWVkaXVtPVdlZWtseStOZXdzbGV=
+0dGVyJnV0bV9jYW1wYWlnbj0yMDE5LTAyLTA1" class=3D"post-title postItemTitleLin=
+k" target=3D"_blank" style=3D"color: #333333; font-weight: normal; text-dec=
+oration: none;"><span class=3D"postItemTitle" style=3D"font-family: georgia=
+, serif; font-size: 21px; line-height: 1;">What&#39;s Happening With the Pi=
+peline (|&gt;) Proposal? [older, but still relevant]</span></a>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/8/-fBhnbALLRN_GXYGnZavWA/aHR0cHM6Ly9iYWJlbGpzL=
+mlvL2Jsb2cvMjAxOC8wNy8xOS93aGF0cy1oYXBwZW5pbmctd2l0aC10aGUtcGlwZWxpbmUtcHJv=
+cG9zYWw_dXRtX3NvdXJjZT1FU25leHROZXdzLmNvbSZ1dG1fbWVkaXVtPVdlZWtseStOZXdzbGV=
+0dGVyJnV0bV9jYW1wYWlnbj0yMDE5LTAyLTA1" class=3D"postItemLinkUrl" style=3D"c=
+olor: #a9a9a9; font-weight: normal; text-decoration: none;">babeljs.io</a>
+                                                                    <br>
+                                                                           =
+ <a href=3D"http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHH=
+mAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/9/sod2U2ZwkaY4kINM8Adcmg/aHR0cHM6L=
+y90d2l0dGVyLmNvbS9KYW1lc0RpR2lvaWE" style=3D"color: #038543; text-decoratio=
+n: none;" target=3D"_blank">@JamesDiGioia, </a>
+                                                                           =
+ <a href=3D"http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHH=
+mAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/10/ZwnMvJDdOJTfZBJ81xflzQ/aHR0cHM6=
+Ly90d2l0dGVyLmNvbS9iYWJlbGpz" style=3D"color: #038543; text-decoration: non=
+e;" target=3D"_blank">@babeljs</a>
+                                                                <br>
+                                                                <br>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/11/CGP1Y2CJyhN1oqK7U9zxxw/aHR0cHM6Ly93d3cueW91=
+dHViZS5jb20vd2F0Y2g_dj11TXVZYUVTNFczbyZ1dG1fc291cmNlPUVTbmV4dE5ld3MuY29tJnV=
+0bV9tZWRpdW09V2Vla2x5K05ld3NsZXR0ZXImdXRtX2NhbXBhaWduPTIwMTktMDItMDU" class=
+=3D"post-title postItemTitleLink" target=3D"_blank" style=3D"color: #333333=
+; font-weight: normal; text-decoration: none;"><span class=3D"postItemTitle=
+" style=3D"font-family: georgia, serif; font-size: 21px; line-height: 1;">S=
+peed, Speed, Speed: JavaScript vs. C++ vs. WebAssembly [29-min. video]</spa=
+n></a>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/12/qAvyKVrnKoH5Lzi5K_DQCg/aHR0cHM6Ly93d3cueW91=
+dHViZS5jb20vd2F0Y2g_dj11TXVZYUVTNFczbyZ1dG1fc291cmNlPUVTbmV4dE5ld3MuY29tJnV=
+0bV9tZWRpdW09V2Vla2x5K05ld3NsZXR0ZXImdXRtX2NhbXBhaWduPTIwMTktMDItMDU" class=
+=3D"postItemLinkUrl" style=3D"color: #a9a9a9; font-weight: normal; text-dec=
+oration: none;">www.youtube.com</a>
+                                                                    <br>
+                                                                           =
+ <a href=3D"http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHH=
+mAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/13/JwZy4ilsJ1AGRoDfIj5huQ/aHR0cHM6=
+Ly90d2l0dGVyLmNvbS9maGlua2Vs" style=3D"color: #038543; text-decoration: non=
+e;" target=3D"_blank">@fhinkel</a>
+                                                                <br>
+                                                                <br>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/14/MafB1sb29MfpNbWnzpDrNQ/aHR0cDovL2V4cGxvcmlu=
+Z2pzLmNvbS9lczIwMTgtZXMyMDE5Lz91dG1fc291cmNlPUVTbmV4dE5ld3MuY29tJnV0bV9tZWR=
+pdW09V2Vla2x5K05ld3NsZXR0ZXImdXRtX2NhbXBhaWduPTIwMTktMDItMDU" class=3D"post=
+-title postItemTitleLink" target=3D"_blank" style=3D"color: #333333; font-w=
+eight: normal; text-decoration: none;"><span class=3D"postItemTitle" style=
+=3D"font-family: georgia, serif; font-size: 21px; line-height: 1;">Read the=
+ book on ECMAScript 2019!</span></a>
+                                                            <br>The book =
+=E2=80=9CExploring ES2018 and ES2019=E2=80=9D is complete. Buy it and read =
+the chapters on ES2019 right now. Everybody else has to wait until March 1.
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/15/PQtsJr9Z41iVgZws88iO0g/aHR0cDovL2V4cGxvcmlu=
+Z2pzLmNvbS9lczIwMTgtZXMyMDE5Lz91dG1fc291cmNlPUVTbmV4dE5ld3MuY29tJnV0bV9tZWR=
+pdW09V2Vla2x5K05ld3NsZXR0ZXImdXRtX2NhbXBhaWduPTIwMTktMDItMDU" class=3D"post=
+ItemLinkUrl" style=3D"color: #a9a9a9; font-weight: normal; text-decoration:=
+ none;">exploringjs.com</a>
+                                                                    <span s=
+tyle=3D"border: 1px solid #999;border-radius: 2px;color: #999;font-size: 11=
+px;font-weight: normal;padding: 1px 5px 1px 5px;">Sponsor</span>
+                                                                <br>
+                                                                <br>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/16/boBeID-m0pv-ZANcGbPJQg/aHR0cHM6Ly90aW1rYWRs=
+ZWMuY29tL3JlbWVtYmVycy8yMDE5LTAxLTMxLXB1dHRpbmctc29tZS1saW1pdHMtb24tamF2YXN=
+jcmlwdC8_dXRtX3NvdXJjZT1FU25leHROZXdzLmNvbSZ1dG1fbWVkaXVtPVdlZWtseStOZXdzbG=
+V0dGVyJnV0bV9jYW1wYWlnbj0yMDE5LTAyLTA1" class=3D"post-title postItemTitleLi=
+nk" target=3D"_blank" style=3D"color: #333333; font-weight: normal; text-de=
+coration: none;"><span class=3D"postItemTitle" style=3D"font-family: georgi=
+a, serif; font-size: 21px; line-height: 1;">Limiting [the size of downloade=
+d] JavaScript?</span></a>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/17/gkpPNJilJZi9NVgWuJyPSQ/aHR0cHM6Ly90aW1rYWRs=
+ZWMuY29tL3JlbWVtYmVycy8yMDE5LTAxLTMxLXB1dHRpbmctc29tZS1saW1pdHMtb24tamF2YXN=
+jcmlwdC8_dXRtX3NvdXJjZT1FU25leHROZXdzLmNvbSZ1dG1fbWVkaXVtPVdlZWtseStOZXdzbG=
+V0dGVyJnV0bV9jYW1wYWlnbj0yMDE5LTAyLTA1" class=3D"postItemLinkUrl" style=3D"=
+color: #a9a9a9; font-weight: normal; text-decoration: none;">timkadlec.com<=
+/a>
+                                                                    <br>
+                                                                           =
+ <a href=3D"http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHH=
+mAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/18/0hp7bpGlC_dnpvcoloRmvg/aHR0cHM6=
+Ly90d2l0dGVyLmNvbS90a2FkbGVj" style=3D"color: #038543; text-decoration: non=
+e;" target=3D"_blank">@tkadlec</a>
+                                                                <br>
+                                                                <br>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/19/66lJsLB0DXkjajlmzm89PA/aHR0cHM6Ly93d3cuc2l0=
+ZXBlbi5jb20vYmxvZy9jb2RlbW9kcy1lZmZlY3RpdmUtYXV0b21hdGVkLXJlZmFjdG9yaW5nLz9=
+1dG1fc291cmNlPUVTbmV4dE5ld3MuY29tJnV0bV9tZWRpdW09V2Vla2x5K05ld3NsZXR0ZXImdX=
+RtX2NhbXBhaWduPTIwMTktMDItMDU" class=3D"post-title postItemTitleLink" targe=
+t=3D"_blank" style=3D"color: #333333; font-weight: normal; text-decoration:=
+ none;"><span class=3D"postItemTitle" style=3D"font-family: georgia, serif;=
+ font-size: 21px; line-height: 1;">Codemods: Effective, Automated Refactori=
+ng</span></a>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/20/V3uWR6EyzvIdukJKE1I_jw/aHR0cHM6Ly93d3cuc2l0=
+ZXBlbi5jb20vYmxvZy9jb2RlbW9kcy1lZmZlY3RpdmUtYXV0b21hdGVkLXJlZmFjdG9yaW5nLz9=
+1dG1fc291cmNlPUVTbmV4dE5ld3MuY29tJnV0bV9tZWRpdW09V2Vla2x5K05ld3NsZXR0ZXImdX=
+RtX2NhbXBhaWduPTIwMTktMDItMDU" class=3D"postItemLinkUrl" style=3D"color: #a=
+9a9a9; font-weight: normal; text-decoration: none;">www.sitepen.com</a>
+                                                                    <br>
+                                                                           =
+ <a href=3D"http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHH=
+mAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/21/64ZRiZ5-EVBYTlqCqZXQ5Q/aHR0cHM6=
+Ly90d2l0dGVyLmNvbS9uaWNrbmlzaQ" style=3D"color: #038543; text-decoration: n=
+one;" target=3D"_blank">@nicknisi</a>
+                                                                <br>
+                                                                <br>
+                                                                <br>
+                                                                <br>
+                                                                <h2 style=
+=3D"border: 0px; color: rgb(170, 170, 170); display: block; font: inherit; =
+font-family: chaparral-pro, Georgia, serif; font-size: 18px; font-style: no=
+rmal; font-weight: 500; letter-spacing: normal; line-height: 1; margin-bott=
+om: 0px; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0px; text=
+-align: left; vertical-align: baseline;">TypeScript</h2>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/22/kA-nihfgMNE-_Hsu90meuQ/aHR0cHM6Ly9ibG9ncy5t=
+c2RuLm1pY3Jvc29mdC5jb20vdHlwZXNjcmlwdC8yMDE5LzAxLzMxL2Fubm91bmNpbmctdHlwZXN=
+jcmlwdC0zLTMvP3V0bV9zb3VyY2U9RVNuZXh0TmV3cy5jb20mdXRtX21lZGl1bT1XZWVrbHkrTm=
+V3c2xldHRlciZ1dG1fY2FtcGFpZ249MjAxOS0wMi0wNQ" class=3D"post-title postItemT=
+itleLink" target=3D"_blank" style=3D"color: #333333; font-weight: normal; t=
+ext-decoration: none;"><span class=3D"postItemTitle" style=3D"font-family: =
+georgia, serif; font-size: 21px; line-height: 1;">Announcing TypeScript 3.3=
+</span></a>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/23/DQg0tvxnA9z-dg4kBJ6Kxw/aHR0cHM6Ly9ibG9ncy5t=
+c2RuLm1pY3Jvc29mdC5jb20vdHlwZXNjcmlwdC8yMDE5LzAxLzMxL2Fubm91bmNpbmctdHlwZXN=
+jcmlwdC0zLTMvP3V0bV9zb3VyY2U9RVNuZXh0TmV3cy5jb20mdXRtX21lZGl1bT1XZWVrbHkrTm=
+V3c2xldHRlciZ1dG1fY2FtcGFpZ249MjAxOS0wMi0wNQ" class=3D"postItemLinkUrl" sty=
+le=3D"color: #a9a9a9; font-weight: normal; text-decoration: none;">blogs.ms=
+dn.microsoft.com</a>
+                                                                    <br>
+                                                                           =
+ <a href=3D"http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHH=
+mAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/24/4a3uF9qh-DD6EJ-BcnLB1g/aHR0cHM6=
+Ly90d2l0dGVyLmNvbS9kcm9zZW53YXNzZXI" style=3D"color: #038543; text-decorati=
+on: none;" target=3D"_blank">@drosenwasser, </a>
+                                                                           =
+ <a href=3D"http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHH=
+mAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/25/nembjktWuVvKDG2l4GhPkw/aHR0cHM6=
+Ly90d2l0dGVyLmNvbS90eXBlc2NyaXB0bGFuZw" style=3D"color: #038543; text-decor=
+ation: none;" target=3D"_blank">@typescriptlang</a>
+                                                                <br>
+                                                                <br>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/26/rC0h4WwXLsb7WyCsWVYYwA/aHR0cHM6Ly9ibG9nLmxv=
+Z3JvY2tldC5jb20vd2hlbi10by11c2UtbmV2ZXItYW5kLXVua25vd24taW4tdHlwZXNjcmlwdC0=
+1ZTRkNmM1Nzk5YWQ_dXRtX3NvdXJjZT1FU25leHROZXdzLmNvbSZ1dG1fbWVkaXVtPVdlZWtseS=
+tOZXdzbGV0dGVyJnV0bV9jYW1wYWlnbj0yMDE5LTAyLTA1" class=3D"post-title postIte=
+mTitleLink" target=3D"_blank" style=3D"color: #333333; font-weight: normal;=
+ text-decoration: none;"><span class=3D"postItemTitle" style=3D"font-family=
+: georgia, serif; font-size: 21px; line-height: 1;">When to use `never` and=
+ `unknown` in TypeScript</span></a>
+                                                                <br>
+                                                                <a href=3D"=
+http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZv=
+LdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/27/ic8BRkGuZxxtrpc_37GwhA/aHR0cHM6Ly9ibG9nLmxv=
+Z3JvY2tldC5jb20vd2hlbi10by11c2UtbmV2ZXItYW5kLXVua25vd24taW4tdHlwZXNjcmlwdC0=
+1ZTRkNmM1Nzk5YWQ_dXRtX3NvdXJjZT1FU25leHROZXdzLmNvbSZ1dG1fbWVkaXVtPVdlZWtseS=
+tOZXdzbGV0dGVyJnV0bV9jYW1wYWlnbj0yMDE5LTAyLTA1" class=3D"postItemLinkUrl" s=
+tyle=3D"color: #a9a9a9; font-weight: normal; text-decoration: none;">blog.l=
+ogrocket.com</a>
+                                                                    <br>
+                                                                           =
+ <a href=3D"http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHH=
+mAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/28/R-lGJMBgApY7A6fnjX7YRA/aHR0cHM6=
+Ly90d2l0dGVyLmNvbS9oYWxsZXR0ag" style=3D"color: #038543; text-decoration: n=
+one;" target=3D"_blank">@hallettj, </a>
+                                                                           =
+ <a href=3D"http://xx1xw.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHH=
+mAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/29/bArjgMoQu7mwnRVuixlXgg/aHR0cHM6=
+Ly90d2l0dGVyLmNvbS9Mb2dSb2NrZXQ" style=3D"color: #038543; text-decoration: =
+none;" target=3D"_blank">@LogRocket</a>
+                                                                <br>
+                                                                <br>
+                                                                <br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style=3D"font-family: H=
+elvetica;font-size: 13px; line-height: 150%;color: rgb(170, 170, 170);">
+                                                    <hr style=3D"border: so=
+lid #f4f4f4 1px;margin: 0 0 25px 0">
+                                                    <strong style=3D"font-s=
+ize: 15px;color: #038543;">Looking for deeply qualified employees or custom=
+ers? Advertise on ES.next News!</strong>
+                                                    <br>
+                                                    ES.next News reaches ov=
+er 8,000 highly skilled and motivated developers. We take their trust serio=
+usly and have high editorial standards.
+                                                    <br>
+                                                    <a href=3D"http://xx1xw=
+.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZvLdYUU3Xs0Q3O=
+k-QDI0Ua-lAAMz_g/30/DKkQo6PWKRCIdlPx1-VvxQ/aHR0cDovL2VzbmV4dG5ld3MuY29tLyNh=
+ZHZlcnRpc2luZy1vbi1lc25leHRuZXdz#advertising-on-esnextnews" style=3D"color:=
+ #a9a9a9; font-weight: normal; text-decoration: underline;" target=3D"_blan=
+k">Check out our media data</a> and <a href=3D"&#x6d;&#97;&#105;&#108;&#116=
+;&#111;&#x3a;&#97;&#100;&#118;&#x65;&#114;&#116;&#105;&#x73;&#x69;&#110;&#1=
+03;&#x40;&#x65;&#115;&#110;&#x65;&#120;&#x74;&#110;&#x65;&#119;&#115;&#46;&=
+#99;&#x6f;&#x6d;" style=3D"color: #a9a9a9; font-weight: normal; text-decora=
+tion: underline;" target=3D"_blank">get directly in touch with us.</a>
+                                                    <br>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- END BODY \\ -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align=3D"center" valign=3D"top" style=3D"border=
+-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                            <!-- // BEGIN FOOTER -->
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"100%" style=3D"border-collapse: collapse; mso-table-lspac=
+e: 0pt; mso-table-rspace: 0pt;">
+                                <tr>
+                                    <td align=3D"center" valign=3D"top" id=
+=3D"templateFooter" style=3D"border-collapse: collapse; border-top: 0; mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; padding: 20px;">
+                                        <table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" width=3D"600" class=3D"templateContainer" style=3D"bor=
+der-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                            <tr>
+                                                <td colspan=3D"3" valign=3D=
+"top" class=3D"footerContent" style=3D"border-collapse: collapse; color: #8=
+08080; font-family: Helvetica; font-size: 10px; line-height: 150%; mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; text-align: center;">
+                                                    <a href=3D"http://xx1xw=
+.mjt.lu/lnk/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZvLdYUU3Xs0Q3O=
+k-QDI0Ua-lAAMz_g/31/rWOC07GBUOFQBGW03VUzoA/aHR0cHM6Ly90d2l0dGVyLmNvbS9Fc25l=
+eHRuZXdz" style=3D"color: #606060;font-weight: normal;text-decoration: unde=
+rline;">Follow
+                                                        on Twitter</a>=C2=
+=A0<a href=3D"http://xx1xw.mjt.lu/nl2/xx1xw/xoj2.html?m=3DAMQAAC2ccnUAAAAB4=
+jgAAAD1YJAAAAAAPosAAHHmAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g&b=3D8b26a60a=
+&e=3D881a5dc4&x=3DISMLi1Nygd6v0Cphc_qi1Q" target=3D"_blank" style=3D"color:=
+ #606060;font-weight: normal;text-decoration: underline;">View
+                                                        in Browser</a>
+                                                    <br>
+                                                    <br>
+                                                    This email was sent to =
+pavl0ff@ya.ru. Want to change how you receive these emails?<br>
+                                                    You can <a href=3D"http=
+://xx1xw.mjt.lu/unsub2?hl=3Den&amp;m=3DAMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPosA=
+AHHmAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g&amp;b=3D8b26a60a&amp;e=3D881a5d=
+c4&amp;x=3DISMLi1Nygd6v0Cphc_qi1Q">unsubscribe from this list</a><br>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- END FOOTER \\ -->
+                        </td>
+                    </tr>
+                </table>
+                <!-- END TEMPLATE SECTIONS \\ -->
+            </td>
+        </tr>
+    </table>
+</center>
+
+<br/><img src=3D"http://xx1xw.mjt.lu/oo/AMQAAC2ccnUAAAAB4jgAAAD1YJAAAAAAPos=
+AAHHmAAzTtgBcWZvLdYUU3Xs0Q3Ok-QDI0Ua-lAAMz_g/3f07d97e/e.gif" height=3D"1" w=
+idth=3D"1" alt=3D"" border=3D"0" style=3D"height:1px;width:1px;border:0;"/>
+</body>
+</html>
+=
+
+--=-x1orm3zEPWLfxvhliXO6--
+
