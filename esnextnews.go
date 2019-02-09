@@ -4,6 +4,7 @@ import (
 	"context"
 	"esnextnews/parser"
 	"fmt"
+	"log"
 	"net/http"
 	"net/url"
 
@@ -36,6 +37,7 @@ func handleRequest(ctx context.Context, sesEvent events.SimpleEmailEvent) error 
 		return fmt.Errorf("SES event has no records")
 	}
 
+	log.Println("Creating AWS session...")
 	region := viper.GetString("aws_region")
 	keyID := viper.GetString("aws_key")
 	secret := viper.GetString("aws_secret")
@@ -46,7 +48,9 @@ func handleRequest(ctx context.Context, sesEvent events.SimpleEmailEvent) error 
 	if err != nil {
 		return fmt.Errorf("Cannot create AWS session: %s", err)
 	}
+	log.Println("AWS session created")
 
+	log.Println("Connecting to S3...")
 	svc := s3.New(sess)
 	o, err := svc.GetObject(&s3.GetObjectInput{
 		Bucket: aws.String(viper.GetString("aws_bucket")),
@@ -55,16 +59,22 @@ func handleRequest(ctx context.Context, sesEvent events.SimpleEmailEvent) error 
 	if err != nil {
 		return fmt.Errorf("Cannot load data from s3: %s", err)
 	}
+	log.Println("S3 data loaded")
 
+	log.Println("Parsing email...")
 	md, err := parser.Parse(o.Body)
 	if err != nil {
 		return fmt.Errorf("Cannot parse loaded data: %s", err)
 	}
+	log.Println("Email parsed")
 
-	_, err = http.Get(getTelegramURL() + getTelegremMessage(md))
+	url := getTelegramURL() + "?" + getTelegremMessage(md)
+	log.Printf("Calling Telegram API with %s...\n", url)
+	_, err = http.Get(url)
 	if err != nil {
 		return fmt.Errorf("Cannot call Telegram API: %s", err)
 	}
+	log.Println("Telegram API called")
 
 	return nil
 }
